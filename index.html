@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 7 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//-----------------//
+// Browser Version //
+//-----------------//
+console.log("Browser Version");
+console.log(navigator.userAgent);
+
+//-----------------//
+// Windows //
+//-----------------//
+console.log("Windows");
+
+// 1. Function to open a window with 500x500 dimensions
+function openSmallWindow() {
+    window.open('', '', 'width=500,height=500');
+}
+
+// 2. Function to close the current window
+function closeWindow() {
+    window.close();
+}
+
+// 3. Function to open a new window with specific preferences
+function openConfiguredWindow() {
+    window.open('https://www.example.com', '', 'toolbar=yes,location=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=no,width=400,height=400');
+}
+
+//-----------------//
+// History URLs //
+//-----------------//
+console.log("History");
+
+// 1. Function to get the length of history
+function getHistoryLength() {
+    console.log("Number of URLs in history: " + history.length);
+}
+
+//-----------------//
+// Cookies //
+//-----------------//
+console.log("Cookies");
+
+// 1. Identify if cookies are enabled
+console.log("Cookies Enabled: " + navigator.cookieEnabled);
+
+// 2. Function to set a cookie
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+// 3. Function to get cookies
+function getCookies() {
+    console.log("Cookies: " + document.cookie);
+}
+</script>
+</head>
+<body>
+  <h2>Browser Console Output</h2>
+  <button onclick="openSmallWindow()">Open 500x500 Window</button>
+  <button onclick="closeWindow()">Close Window</button>
+  <button onclick="openConfiguredWindow()">Open Configured Window</button>
+  <button onclick="getHistoryLength()">Get History Length</button>
+  <button onclick="setCookie('testCookie', 'hello', 7)">Set Cookie</button>
+  <button onclick="getCookies()">Get Cookies</button>
+  <p>Check the console for more details!</p>
+</body>
+</html>
